@@ -27,7 +27,7 @@ always@(*)begin
 		MEMORY[address%6] = writeData;
 	end
 	else if(memRead)begin
-		readData = MEMORY[address];	
+		readData = MEMORY[address%6];	
 	end
 	else begin
 		readData = 'd0;
