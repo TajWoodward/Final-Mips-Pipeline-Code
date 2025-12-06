@@ -20,9 +20,9 @@ module execute(
 	wire [4:0] mux5_wire;
 	assign wb_wire = wb;
 	assign mem_wire = mem;
-	mux5 u1(instr_2016, instr_1511, execute[0], mux5_wire);
+	mux5 u1(instr_2016, instr_1511, execute[3], mux5_wire);
 	alucontrol u2(sign_ext[5:0], execute[2:1], ALC_wire); 
-	mux32 u3(readdat2, sign_ext, execute[3], ALU_in_wire);
+	mux32 u3(readdat2, sign_ext, execute[0], ALU_in_wire);
 	alu u4(readdat1, ALU_in_wire, ALC_wire, alu_wire, zero_wire);
 	adder u5(npc, sign_ext, add_wire);
 	ex_mem_latch u6(clk, rst, wb_wire, mem_wire, add_wire, zero_wire, alu_wire, readdat2, mux5_wire, wb_out, branch, memread, memwrite, addOUT, zero, aluOUT, readdat2OUT, mux5OUT);
